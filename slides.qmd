@@ -1,16 +1,30 @@
 ---
+# Quarto options
 title: ggplot2 3.6.0に備えよう
 format:
   gfm:
     variant: +yaml_metadata_block
+
+# Slidev options
 theme: default
 background: /background.png
 class: text-center
 drawings:
   persist: false
+# enable MDC Syntax: https://sli.dev/features/mdc
 mdc: true
 ---
 
+```{r}
+#| include: false
+knitr::opts_knit$set(
+  base.dir = here::here("public/")
+)
+
+knitr::opts_chunk$set(
+  fig.path = here::here("public/")
+)
+```
 
 # ggplot2 3.6.0<br/>に備えよう
 
@@ -18,16 +32,19 @@ mdc: true
 
 @yutannihilation
 
+```{=html}
 ---
 layout: image-right
 image: "/icon.jpg"
 ---
+```
 
 # ドーモ！
 
 ## 名前:
 
-湯谷啓明 (@yutannihilation)
+湯谷啓明
+(@yutannihilation)
 
 ## 好きな言語:
 
@@ -37,26 +54,32 @@ R、Rust、忍殺語
 
 MIERUNE 入社
 
+```{=html}
 ---
 layout: default
 ---
+```
 
 # ggplot2 3.6.0
 
 - 今年5月頃？
 - けっこう変更がある
 
+```{=html}
 ---
 layout: default
 ---
+```
 
 # けっこう変更がある
 
 - <https://ggplot2.tidyverse.org/dev/news/index.html>
 
+```{=html}
 ---
 layout: default
 ---
+```
 
 # Theme の強化
 
@@ -65,13 +88,17 @@ layout: default
 - `theme(palette = )`
 - `geom_marquee()`, `element_marquee()`
 
+```{=html}
 ---
 layout: default
 ---
+```
 
 # `theme(geom = )`
 
-``` r
+```{r}
+#| label: element_geom
+#| output: false
 plot(0)
 ```
 
