@@ -69,7 +69,7 @@ layout: default
 - `ink` と `paper`
 - `from_theme()`
 - `theme(palette = )`
-- `geom_marquee()`, `element_marquee()`
+- marquee 関連の機能
 
 ---
 layout: default
@@ -226,13 +226,73 @@ layout: default
 # `theme(palette = )`
 
 ``` r
-p <- ggplot(mpg, aes(displ, hwy)) +
+ggplot(mpg, aes(displ, hwy)) +
   geom_point(aes(colour = class)) +
   theme(
     palette.colour.discrete = "mint"
   )
-
-p
 ```
 
-![](./plot/unnamed-chunk-10-1.png)
+---
+layout: default
+---
+
+![](./plot/unnamed-chunk-11-1.png)
+
+---
+layout: default
+---
+
+# 補足
+
+- palette の管理は scales v1.4.0 の新機能（まだリリースされていない）
+- すでにたくさんの palette が用意されているが、自分で palette
+  を登録することもできる
+- `scales::palette_names()` で確認できる
+
+---
+layout: default
+---
+
+``` r
+scales::palette_names()
+#>   [1] "greens 2"        "r4"              "greens 3"        "blues"          
+#>   [5] "terrain"         "tableau 10"      "terrain 2"       "purple-orange"  
+#>   [9] "spectral"        "ag_sunset"       "sunset"          "ylgn"           
+#>  [13] "orrd"            "purple-blue"     "rdylbu"          "paired"         
+#>  [17] "teal"            "gnbu"            "inferno"         "puor"           
+#>  [21] "grey"            "armyrose"        "purpor"          "purple-brown"   
+#>  [25] "cividis"         "tofino"          "tropic"          "oranges"        
+#>  [29] "bugn"            "green-brown"     "warm"            "plasma"         
+#>  [33] "harmonic"        "ag_grnyl"        "polychrome 36"   "reds 2"         
+#>  [37] "rdbu"            "reds 3"          "green-orange"    "purples 2"      
+#>  [41] "blue-red 2"      "blues 2"         "lisbon"          "accent"         
+#>  [45] "purples 3"       "blue-red 3"      "blues 3"         "purple-yellow"  
+#>  [49] "blue-red"        "turbo"           "piyg"            "viridis"        
+#>  [53] "tealrose"        "bluyl"           "bupu"            "classic tableau"
+#>  [57] "blue-yellow"     "broc"            "oslo"            "heat"           
+#>  [61] "set1"            "set2"            "purd"            "hue"            
+#>  [65] "set3"            "temps"           "reds"            "dark2"          
+#>  [69] "brwnyl"          "mint"            "burgyl"          "blue-yellow 2"  
+#>  [73] "prgn"            "blue-yellow 3"   "turku"           "roma"           
+#>  [77] "burg"            "purp"            "sunsetdark"      "batlow"         
+#>  [81] "heat 2"          "hawaii"          "red-purple"      "tealgrn"        
+#>  [85] "peach"           "pastel 1"        "magenta"         "pastel 2"       
+#>  [89] "lajolla"         "pastel1"         "pastel2"         "greys"          
+#>  [93] "okabe-ito"       "pubu"            "cork"            "pinkyl"         
+#>  [97] "blugrn"          "ylorrd"          "rdylgn"          "magma"          
+#> [101] "set 1"           "set 2"           "ylgnbu"          "set 3"          
+#> [105] "pubugn"          "red-green"       "purple-green"    "greens"         
+#> [109] "mako"            "alphabet"        "geyser"          "dark mint"      
+#> [113] "vik"             "cyan-magenta"    "emrld"           "red-yellow"     
+#> [117] "ylorbr"          "brbg"            "cold"            "purples"        
+#> [121] "fall"            "red-blue"        "ggplot2"         "berlin"         
+#> [125] "rocket"          "rdgy"            "dark 2"          "dark 3"         
+#> [129] "dynamic"         "green-yellow"    "redor"           "rdpu"           
+#> [133] "grays"           "light grays"     "earth"           "oryel"          
+#> [137] "r3"              "zissou 1"
+```
+
+# marquee 関連の機能
+
+<https://github.com/tidyverse/ggplot2/issues/5920>

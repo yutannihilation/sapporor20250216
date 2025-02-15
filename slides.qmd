@@ -106,7 +106,7 @@ layout: default
 - `ink` と `paper`
 - `from_theme()`
 - `theme(palette = )`
-- `geom_marquee()`, `element_marquee()`
+- marquee 関連の機能
 
 ```{=html}
 ---
@@ -297,11 +297,55 @@ layout: default
 # `theme(palette = )`
 
 ```{r}
-p <- ggplot(mpg, aes(displ, hwy)) +
+#| output: false
+ggplot(mpg, aes(displ, hwy)) +
   geom_point(aes(colour = class)) +
   theme(
     palette.colour.discrete = "mint"
   )
-
-p
 ```
+
+```{=html}
+---
+layout: default
+---
+```
+
+```{r}
+#| echo: false
+ggplot(mpg, aes(displ, hwy)) +
+  geom_point(aes(colour = class)) +
+  theme(
+    palette.colour.discrete = "mint"
+  )
+```
+
+
+```{=html}
+---
+layout: default
+---
+```
+
+# 補足
+
+* palette の管理は scales v1.4.0 の新機能（まだリリースされていない）
+* すでにたくさんの palette が用意されているが、自分で palette を登録することもできる
+* `scales::palette_names()` で確認できる
+
+```{=html}
+---
+layout: default
+---
+```
+
+```{r}
+scales::palette_names()
+```
+
+
+
+# marquee 関連の機能
+
+<https://github.com/tidyverse/ggplot2/issues/5920>
+
