@@ -1,11 +1,11 @@
-# Welcome to [Slidev](https://github.com/slidevjs/slidev)!
+# SappoRo.R#12
 
-To start the slide show:
+## Event
 
-- `pnpm install`
-- `pnpm dev`
-- visit <http://localhost:3030>
+<https://sapporor.connpass.com/event/338814/>
 
-Edit the [slides.md](./slides.md) to see the changes.
+## Build
 
-Learn more about Slidev at the [documentation](https://sli.dev/).
+1. Render `.qmd` file
+2. Run `npm exec -c 'slidev "slides.md" --port 3030'` (or, via VS Code extension) to see the preview
+3. Push
