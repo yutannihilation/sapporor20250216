@@ -218,3 +218,21 @@ layout: default
 
 - つまり、Geom 側の実装に寄るので、ggplot2 本体の Geom
   は大丈夫でも、拡張パッケージの Geom には効かないことがあるかも？
+
+---
+layout: default
+---
+
+# `theme(palette = )`
+
+``` r
+p <- ggplot(mpg, aes(displ, hwy)) +
+  geom_point(aes(colour = class)) +
+  theme(
+    palette.colour.discrete = "mint"
+  )
+
+p
+```
+
+![](./plot/unnamed-chunk-10-1.png)
