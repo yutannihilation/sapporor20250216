@@ -107,8 +107,7 @@ layout: default
 
 # 「ただし」の例
 
-- `theme(text = )` の指定は `geom_text()`
-  などには引き継がれない（けっこうハマりがち）
+- `theme(text = )` の指定は `geom_text()` などには引き継がれない
 - `theme(text = )` のサイズは `geom_text()` のサイズ指定と単位が違う
 
 ---
@@ -117,7 +116,7 @@ layout: default
 
 # `theme(geom = )`
 
-- `element_geom()` でデフォルトのスタイルを指定できるように
+- `element_geom()` でデフォルトのスタイルを指定できるようになった
 
 ``` r
 p <- ggplot(mpg, aes(displ, hwy)) + geom_point()
@@ -136,3 +135,86 @@ layout: default
 ---
 
 ![](./plot/unnamed-chunk-3-1.png)
+
+---
+layout: default
+---
+
+# `ink` と `paper`
+
+- `ink`: メインの色
+- `paper`: 背景の色
+- `accent`: 強調の色
+
+---
+layout: default
+---
+
+# `ink` が青
+
+``` r
+p + theme(geom = element_geom(ink = "blue"))
+```
+
+![](./plot/unnamed-chunk-5-1.png)
+
+---
+layout: default
+---
+
+# `ink` が青で `paper` が赤
+
+``` r
+p + theme(geom = element_geom(ink = "blue", paper = "red"))
+```
+
+![](./plot/unnamed-chunk-6-1.png)
+
+---
+layout: default
+---
+
+# たぶん `paper` には `background` と同じ色を指定する？
+
+``` r
+p + theme(
+  geom = element_geom(ink = "blue", paper = "red"),
+  plot.background = element_rect(fill = "red"),
+  panel.background = element_rect(fill = "red")
+)
+```
+
+---
+layout: default
+---
+
+![](./plot/unnamed-chunk-8-1.png)
+
+---
+layout: default
+---
+
+# `from_theme()`
+
+- なぜこの指定が動くのかというと `from_theme()` が default aes
+  に設定されているから
+
+``` r
+GeomPoint$default_aes
+#> Aesthetic mapping: 
+#> * `shape`  -> `from_theme(pointshape)`
+#> * `colour` -> `from_theme(ink)`
+#> * `size`   -> `from_theme(pointsize)`
+#> * `fill`   -> NA
+#> * `alpha`  -> NA
+#> * `stroke` -> `from_theme(borderwidth)`
+```
+
+---
+layout: default
+---
+
+# `from_theme()`
+
+- つまり、Geom 側の実装に寄るので、ggplot2 本体の Geom
+  は大丈夫でも、拡張パッケージの Geom には効かないことがあるかも？
