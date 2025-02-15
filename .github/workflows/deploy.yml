@@ -31,6 +31,9 @@ jobs:
       - name: Install dependencies
         run: nci
 
+      - name: Tweak
+        run: sed -i 's|./plot|/plot|' slides.md
+
       - name: Build
         run: nr build --base /${{github.event.repository.name}}/
 
