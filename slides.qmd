@@ -8,6 +8,10 @@ format:
 # Slidev options
 theme: default
 background: /background.png
+fonts:
+  sans: Noto Sans JP
+  mono: Fira Code
+  weights: '600,900'
 class: text-center
 drawings:
   persist: false
@@ -62,13 +66,26 @@ image: "/icon.jpg"
 ## 自己紹介:
 
 - （最近ぜんぜん仕事してないけど）ggplot2 のメンテナのひとりです
-- 今日で無職おわりです
+- 今日で無職おわり
 
 ```{=html}
 ---
-layout: default
+layout: two-cols
 ---
 ```
+
+# ggplot2
+
+- グラフを描画するためのフレームワーク
+- 一貫性のある文法で、細かい調整がしやすい
+- なぜバージョンは 3 になのに ggplot3 じゃないの？、とかツッコむのはやめてあげてね
+
+::right::
+
+![](https://ggplot2.tidyverse.org/logo.png)
+
+
+---
 
 # ggplot2 3.6.0
 
@@ -81,21 +98,14 @@ layout: default
 </v-clicks>
 
 
-```{=html}
 ---
-layout: default
----
-```
 
 # けっこう変更がある
 
 - <https://ggplot2.tidyverse.org/dev/news/index.html>
+- ※今日話すことは正式リリースまでにまだ変わると思います。あくまで参考までに！
 
-```{=html}
 ---
-layout: default
----
-```
 
 # Theme の強化
 
@@ -105,22 +115,14 @@ layout: default
 - `theme(palette = )`
 - marquee 関連の機能
 
-```{=html}
 ---
-layout: default
----
-```
 
 # これまで
 
 - だいたいのスタイルは `theme()` で設定できる
 - と言いつつ「ただし、」が多かった
 
-```{=html}
 ---
-layout: default
----
-```
 
 # 「ただし」の例
 
@@ -133,14 +135,12 @@ layout: default
   ```
 - `Geom` の点や線の大きさ、色などは `update_geom_defaults()`
   ```r
-  update_geom_defaults("point", aes(color = "red"))
+  update_geom_defaults("point",
+    aes(color = "red")
+  )
   ```
 
-```{=html}
 ---
-layout: default
----
-```
 
 # 「ただし」の例
 
@@ -148,11 +148,7 @@ layout: default
 - `theme(text = )` のサイズは `geom_text()` のサイズ指定と単位が違う
 
 
-```{=html}
 ---
-layout: default
----
-```
 
 # `theme(geom = )`
 
@@ -172,11 +168,7 @@ p2 <- p +
   )
 ```
 
-```{=html}
 ---
-layout: default
----
-```
 
 ```{r}
 #| echo: false
@@ -186,11 +178,7 @@ patchwork::wrap_plots(
 )
 ```
 
-```{=html}
 ---
-layout: default
----
-```
 
 # `ink` と `paper`
 
@@ -199,11 +187,7 @@ layout: default
 - `accent`: 強調の色
 
 
-```{=html}
 ---
-layout: default
----
-```
 
 # `ink` が青
 
@@ -213,43 +197,47 @@ p <- ggplot(mpg, aes(class)) + geom_bar()
 ```
 
 ```{r}
-p + theme(geom = element_geom(ink = "blue"))
+#| out-height: 66%
+p + theme(geom = element_geom(
+  ink = "blue"
+))
 ```
 
-```{=html}
 ---
-layout: default
----
-```
 
 # `ink` が青で `paper` が赤
 
 ```{r}
-p + theme(geom = element_geom(ink = "blue", paper = "red"))
+#| out-height: 66%
+p + theme(geom = element_geom(
+  ink = "blue", paper = "red"
+))
 ```
 
-```{=html}
 ---
-layout: default
----
-```
 
-# たぶん `paper` には `background` と同じ色を指定する？
+# `ink` が青で `paper` が赤
+
+- たぶん「赤い紙の上に青いインクで書いた」というイメージ？
+- まあそら紫になるか、という感じではある
+- 使いこなせる気があんまりしない
+
+---
+
+# `paper` には `background` と同じ色を指定するのが正解...？
 
 ```{r}
 #| output: false
 p + theme(
-  geom = element_geom(ink = "blue", paper = "red"),
+  geom = element_geom(
+    ink = "blue", paper = "red"
+  ),
   plot.background = element_rect(fill = "red"),
   panel.background = element_rect(fill = "red")
 )
 ```
 
-```{=html}
 ---
-layout: default
----
-```
 
 ```{r}
 #| echo: false
@@ -260,11 +248,7 @@ p + theme(
 )
 ```
 
-```{=html}
 ---
-layout: default
----
-```
 
 # `from_theme()`
 
@@ -275,21 +259,13 @@ GeomPoint$default_aes
 ```
 
 
-```{=html}
 ---
-layout: default
----
-```
 
 # `from_theme()`
 
 - つまり、Geom 側の実装に寄るので、ggplot2 本体の Geom は大丈夫でも、拡張パッケージの Geom には効かないことがあるかも？
 
-```{=html}
 ---
-layout: default
----
-```
 
 # `theme(palette = )`
 
@@ -302,11 +278,7 @@ ggplot(mpg, aes(displ, hwy)) +
   )
 ```
 
-```{=html}
 ---
-layout: default
----
-```
 
 ```{r}
 #| echo: false
@@ -318,11 +290,7 @@ ggplot(mpg, aes(displ, hwy)) +
 ```
 
 
-```{=html}
 ---
-layout: default
----
-```
 
 # 補足
 
@@ -330,21 +298,13 @@ layout: default
 - すでにたくさんの palette が用意されているが、自分で palette を登録することもできる
 - `scales::palette_names()` で確認できる
 
-```{=html}
 ---
-layout: default
----
-```
 
 ```{r}
 scales::palette_names()
 ```
 
-```{=html}
 ---
-layout: default
----
-```
 
 # marquee 関連の機能
 
@@ -353,11 +313,7 @@ layout: default
 - 「integration」というのがどういうことなのかあんまりよくわかってない
 
 
-```{=html}
 ---
-layout: default
----
-```
 
 # edition 導入？
 
@@ -365,25 +321,10 @@ layout: default
 - <https://github.com/tidyverse/ggplot2/pull/6203>
 - うまくいくかは不明。拡張パッケージとどう足並みを揃えるかが難しそう。
 
-```{=html}
 ---
-layout: default
----
-```
-
-# いずれにせよ言えること
-
-- 後方互換性をケアするのがつらすぎるほどいっぱい変更がある
-- ということはたぶんいろいろ壊れるものがある
-
-```{=html}
----
-layout: default
----
-```
 
 # まとめ
 
 - `theme()` まわりが大幅強化されるので楽しみ
-- いっぱい変更があるのでしばらくはいろいろ混乱しそう
+- いっぱい変更があるので、リリースからしばらくはトラブルあるかも
 - 備えよう、とは言うものの、特にできることはないので今日は🍺を飲んで忘れましょう！
