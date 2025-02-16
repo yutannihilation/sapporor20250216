@@ -65,7 +65,7 @@ R、Rust、忍殺語
 
 ## 近況:
 
-MIERUNE 入社
+今日で無職おわりです
 
 ```{=html}
 ---
@@ -159,7 +159,7 @@ layout: default
 
 # `theme(geom = )`
 
-* `element_geom()` でデフォルトのスタイルを指定できるようになった
+- `element_geom()` でデフォルトのスタイルを指定できるようになった
 
 ```{r}
 #| label: element_geom
@@ -329,9 +329,9 @@ layout: default
 
 # 補足
 
-* palette の管理は scales v1.4.0 の新機能（まだリリースされていない）
-* すでにたくさんの palette が用意されているが、自分で palette を登録することもできる
-* `scales::palette_names()` で確認できる
+- palette の管理は scales v1.4.0 の新機能（まだリリースされていない）
+- すでにたくさんの palette が用意されているが、自分で palette を登録することもできる
+- `scales::palette_names()` で確認できる
 
 ```{=html}
 ---
@@ -343,9 +343,39 @@ layout: default
 scales::palette_names()
 ```
 
-
+```{=html}
+---
+layout: default
+---
+```
 
 # marquee 関連の機能
 
-<https://github.com/tidyverse/ggplot2/issues/5920>
+- Marquee: Markdown 記法でスタイルを細かく設定できる
+- <https://github.com/tidyverse/ggplot2/issues/5920>
+- 「integration」というのがどういうことなのかあんまりよくわかってない
 
+
+```{=html}
+---
+layout: default
+---
+```
+
+# edition 導入？
+
+- さすがに後方互換性を保つのつらすぎるので、edition を導入しよういう案がある
+- <https://github.com/tidyverse/ggplot2/pull/6203>
+- うまくいくかは不明。拡張パッケージとどう足並みを揃えるかが難しそう。
+
+```{=html}
+---
+layout: default
+---
+```
+
+# いずれにせよ言えること
+
+- 後方互換性をケアするのがつらすぎるほどいっぱい変更がある
+- ということはたぶんいろいろ壊れるものがある
+- 備えよう

@@ -35,7 +35,7 @@ R、Rust、忍殺語
 
 ## 近況:
 
-MIERUNE 入社
+今日で無職おわりです
 
 ---
 layout: default
@@ -293,6 +293,33 @@ scales::palette_names()
 #> [137] "r3"              "zissou 1"
 ```
 
+---
+layout: default
+---
+
 # marquee 関連の機能
 
-<https://github.com/tidyverse/ggplot2/issues/5920>
+- Marquee: Markdown 記法でスタイルを細かく設定できる
+- <https://github.com/tidyverse/ggplot2/issues/5920>
+- 「integration」というのがどういうことなのかあんまりよくわかってない
+
+---
+layout: default
+---
+
+# edition 導入？
+
+- さすがに後方互換性を保つのつらすぎるので、edition
+  を導入しよういう案がある
+- <https://github.com/tidyverse/ggplot2/pull/6203>
+- うまくいくかは不明。拡張パッケージとどう足並みを揃えるかが難しそう。
+
+---
+layout: default
+---
+
+# いずれにせよ言えること
+
+- 後方互換性をケアするのがつらすぎるほどいっぱい変更がある
+- ということはたぶんいろいろ壊れるものがある
+- 備えよう
